@@ -36,7 +36,8 @@ while nreversals < staircase_reversal && i_trial < ntrials
     WaitSecs(p.times.fix);
     % Draw dots
     drawnXY = drawDots(p, n);
-    DrawFormattedText(p.frame.ptr,'Which has more dots ? ', 'center',  p.my+p.stim.diam+50);
+    DrawFormattedText(p.frame.ptr,'어떤 곳에 원이 더 많죠?', 'center',  p.my+p.stim.diam+50);
+%     DrawFormattedText(p.frame.ptr,'Which has more dots ? ', 'center',  p.my+p.stim.diam+50);
     DrawFormattedText(p.frame.ptr,'["A"] ? ["D"]', 'center',  p.my+p.stim.diam+100);
     t=Screen('Flip', p.frame.ptr);
     
@@ -60,7 +61,8 @@ while nreversals < staircase_reversal && i_trial < ntrials
             rt = respTime - t;
             % Show confirmation of choice
             drawDots(p, n, drawnXY);
-            DrawFormattedText(p.frame.ptr,'Which has more dots ? ', 'center',  p.my+p.stim.diam+50);
+            DrawFormattedText(p.frame.ptr,'어떤 쪽이 원이 더 많죠?', 'center',  p.my+p.stim.diam+50);
+%             DrawFormattedText(p.frame.ptr,'Which has more dots ? ', 'center',  p.my+p.stim.diam+50);
             DrawFormattedText(p.frame.ptr,'["A"] ? ["D"]', 'center',  p.my+p.stim.diam+100);
             Screen('TextSize',p.frame.ptr,48);
             if key == 1
@@ -80,7 +82,8 @@ while nreversals < staircase_reversal && i_trial < ntrials
     Screen('FrameOval',p.frame.ptr,p.white,p.stim.rectR,p.stim.pen_width);
     Screen('FillRect', p.frame.ptr,p.white, p.stim.FixCrossL');
     Screen('FillRect', p.frame.ptr,p.white, p.stim.FixCrossR');
-    DrawFormattedText(p.frame.ptr,'Which has more dots ? ', 'center',  p.my+p.stim.diam+50);
+    DrawFormattedText(p.frame.ptr,'어떤 쪽이 원이 더 많죠?', 'center',  p.my+p.stim.diam+50);
+%     DrawFormattedText(p.frame.ptr,'Which has more dots ? ', 'center',  p.my+p.stim.diam+50);
     DrawFormattedText(p.frame.ptr,'["A"] ? ["D"]', 'center',  p.my+p.stim.diam+100);
     Screen('TextSize',p.frame.ptr,48);
     if trialComplete
@@ -112,7 +115,8 @@ while nreversals < staircase_reversal && i_trial < ntrials
             Screen('FrameOval',p.frame.ptr,p.white,p.stim.rectR,p.stim.pen_width);
             Screen('FillRect', p.frame.ptr,p.white, p.stim.FixCrossL');
             Screen('FillRect', p.frame.ptr,p.white, p.stim.FixCrossR');
-            DrawFormattedText(p.frame.ptr,'Which has more dots ? ', 'center',  p.my+p.stim.diam+50);
+            DrawFormattedText(p.frame.ptr,'어떤 쪽이 원이 더 많죠?', 'center',  p.my+p.stim.diam+50);
+%             DrawFormattedText(p.frame.ptr,'Which has more dots ? ', 'center',  p.my+p.stim.diam+50);
             DrawFormattedText(p.frame.ptr,'["A"] ? ["D"]', 'center',  p.my+p.stim.diam+100);
             Screen('TextSize',p.frame.ptr,48);
             if key == 1
@@ -197,9 +201,11 @@ while nreversals < staircase_reversal && i_trial < ntrials
     
     if feedback
         if results.correct(i_trial)
-            DrawText(p.frame.ptr,'Correct!', 'c');
+            DrawText(p.frame.ptr,'정답입니다!', 'c');
+%             DrawText(p.frame.ptr,'Correct!', 'c');
         else
-            DrawText(p.frame.ptr,'Incorrect', 'c');
+            DrawText(p.frame.ptr,'정답이 아닙니다', 'c');
+%             DrawText(p.frame.ptr,'Incorrect', 'c');
         end
         Screen('Flip', p.frame.ptr);
         WaitSecs(p.times.feedback);

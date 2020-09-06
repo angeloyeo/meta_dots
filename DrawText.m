@@ -144,10 +144,10 @@ scr.width  = r(3)-r(1);
 scr.height = r(4)-r(2);
 
 if abs(x0)<=1
-    x0=(1+x0)*scr.width/2;
+    x0=(1+x0)*scr.width/2; % x 방향 중점 좌표
 end
 if abs(y0)<=1
-    y0=(1+y0)*scr.height/2;
+    y0=(1+y0)*scr.height/2; % y 방향 중점 좌표
 end
 
 if x>1
@@ -160,6 +160,11 @@ if y>1
 else
     xy(:,2) = y0 + (y-1).*wh(:,2)/2;
 end
+
+% 한국어 처리할 수 있도록 코드 추가
+Screen('TextFont', wPtr, '-:lang=ko');
+wh(:,2) = wh(:,2) * 1.2; % y축 간격을 조금 더 키우는 용도
+
 for i=1:numel(txt)
     [xy(i,1) xy(i,2)]=Screen('DrawText',wPtr,txt{i},xy(i,1),xy(i,2)+(i-1)*wh(i,2)/numel(txt),fgcol,bgcol);
 end
