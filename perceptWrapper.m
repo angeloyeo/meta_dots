@@ -2,7 +2,7 @@ function perceptWrapper
 % Dots task for perceptual metacognition
 % Sebastien Massoni, modified by SF 2013
 
-clear all
+clear
 clc
 % addpath('C:\Psych\Psychtoolbox\')
 KbName('UnifyKeyNames');
@@ -42,7 +42,7 @@ WaitSecs(2);
 %% 슬라이드 2: Example Stimuli 소개
 
 InstructName = '슬라이드2';
-instructScreen = imread(['지시문/' InstructName], 'tif'); % 그림 사이즈 보다는 스크린 사이즈가 더 커야만 화면에 나옴.
+instructScreen = imread(['지시문/' InstructName], 'tif');
 Screen('Flip',p.frame.ptr);
 Screen(p.frame.ptr,'PutImage',instructScreen);
 Screen('Flip',p.frame.ptr);
@@ -60,7 +60,7 @@ WaitSecs(2);
 % WaitSecs(2);
 % WaitAnyPress(KbName('space'));
 
-%% 슬라이드 3
+%% 슬라이드 3: 예를 들어, 다음과 같이 화면에 두 개의 원이 나타납니다
 
 InstructName = '슬라이드3';
 instructScreen = imread(['지시문/' InstructName], 'tif'); % 그림 사이즈 보다는 스크린 사이즈가 더 커야만 화면에 나옴.
@@ -68,12 +68,6 @@ Screen('Flip',p.frame.ptr);
 Screen(p.frame.ptr,'PutImage',instructScreen);
 Screen('Flip',p.frame.ptr);
 WaitSecs(2);
- WaitAnyPress(KbName('space'));
-%  
-% DrawText(p.frame.ptr, ...
-%     {double('예를 들어, 다음과 같이 화면에 두 개의 원이 나타납니다.')}, 'c');
-% Screen('Flip', p.frame.ptr);
-% WaitSecs(1.0); 
 
 %% 슬라이드 4에서 표현하고자 했던 것
 n=[40 60];
@@ -130,20 +124,6 @@ Screen(p.frame.ptr,'PutImage',instructScreen);
 Screen('Flip',p.frame.ptr);
 WaitSecs(2);
  WaitAnyPress(KbName('space'));
-%  
-% DrawText(p.frame.ptr,{...
-%     double('그럼 지금부터 과제에 익숙해지기 위해 연습 시행을 시작하겠습니다.'), ' ', ' ',...
-%     double('상당히 어려운 과제이므로.'),' ',...
-%     double('정답을 너무 어림짐작하는 것은 아닌지 염려하지 않으셔도 됩니다.'), ' ', ' ',...
-%     double('스페이스 바를 눌러서 계속 진행합니다.')},'c');
-% 
-% Screen('Flip', p.frame.ptr);
-% WaitSecs(2);
-% WaitAnyPress(KbName('space'));
-
-Screen('FrameOval',p.frame.ptr,p.white,p.stim.rectL,p.stim.pen_width);
-Screen('FrameOval',p.frame.ptr,p.white,p.stim.rectR,p.stim.pen_width);
-t=Screen('Flip', p.frame.ptr);
 
 %% 슬라이드 7
 % 연습시행 시작 전 실험자 부르기.
@@ -170,6 +150,7 @@ WaitSecs(2);
  
 feedback = 1;
 conf = 0;
+% conf = 1; % 테스트용
 ntrials = Inf; % 원래 세팅
 % ntrials = 2; % 테스트
 staircase_reversal = 8;
@@ -190,17 +171,6 @@ for i = 9 :14
     WaitSecs(2);
      WaitAnyPress(KbName('space'));
 end
-% DrawText(p.frame.ptr, {...
-%     double('지금부터는 귀하께서 자신의 판단을 얼마나 확신하는지 점수로 평정해보는.'),' ',...
-%     double('연습을 하겠습니다.'),' ',' ',...
-%     double('귀하께서 점이 더 많은 원을 선택하고 나면'),' ',...
-%     double('귀하의 확신감을 1~6점으로 평정할 수 있는 척도가 나타날 것입니다.'), ' ',...
-%     double('이 때 왼쪽 혹은 오른쪽 화살표를 이용하여 커서를 이동시킬 수 있습니다.'),' ', ' ',...
-%     double('계속 진행하시려면 스페이스 바를 눌러주세요.')}, 'c');
-% 
-% Screen('Flip', p.frame.ptr);
-% WaitSecs(0.5);
-% WaitAnyPress(KbName('space'));
 
 % 연습 trial 2번째 시작(feedback 없고, confidence score 매기는 경우)
 feedback = 0;
@@ -261,20 +231,10 @@ for b = 1:nblocks
     WaitSecs(2);
     WaitAnyPress(KbName('space'));
     
-%     DrawText(p.frame.ptr, {...
-%         double('잠깐 쉴까요?'),' ' ,' ',...
-%         double('다음 블록을 시작할 준비가 되셨으면 스페이스바를 눌러주세요')}, 'c');
-%     Screen('Flip', p.frame.ptr);
-%     WaitSecs(0.5);
-%     WaitAnyPress(KbName('space'));    
-    
     DATA(b).results = results;
     
     save(p.filename,'DATA');
 end
 
-% 아래는 임시 코드
-DATA(1).results = results;
-save(p.filename,'DATA');
 %% Save the data and exit
 Screen('Closeall')

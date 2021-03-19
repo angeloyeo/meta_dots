@@ -60,11 +60,12 @@ while (secs - start_time) < p.times.confDuration_inSecs;
         Screen('DrawLine',curWindow,[255 255 255],tickMark(tick),center(2)+VASoffset+10,tickMark(tick),center(2)+VASoffset);
         DrawFormattedText(curWindow,tickLabels{tick},tickMark(tick)-10,center(2)+VASoffset-30,[255 255 255]);
     end
-    DrawFormattedText(curWindow,'Confidence?','center',center(2)+VASoffset+75,[255 255 255]);
+    DrawFormattedText(curWindow,double('얼마나 확신하시나요?'), 'center',  center(2)+VASoffset+75, [255, 255, 255]);
+%     DrawFormattedText(curWindow,'Confidence?','center',center(2)+VASoffset+75,[255 255 255]);
 
     % Update arrow
     arrowPoints = [([-0.5 0 0.5]'.*arrowwidth)+xpos ([1 0 1]'.*arrowheight)+center(2)+VASoffset];
-    Screen('FillPoly',curWindow,[255 255 255],arrowPoints);
+    Screen('FillPoly',curWindow,[255 0 0],arrowPoints);
     Screen('Flip', curWindow);
 end
 
@@ -72,7 +73,8 @@ if deadline == 0;
     conf = NaN;
     RT = NaN;
     % Draw confidence text
-    DrawFormattedText(curWindow,'Too late!','center',center(2)+VASoffset+75,[255 255 255]);
+%     DrawFormattedText(curWindow,'Too late!','center',center(2)+VASoffset+75,[255 255 255]);
+    DrawFormattedText(curWindow,double('시간이 초과되었습니다!'), 'center',  center(2)+VASoffset+75, [255, 255, 255]);
     Screen('Flip', curWindow);
     pause(p.times.confFBDuration_inSecs);
 
@@ -97,7 +99,8 @@ elseif deadline == 1;
         Screen('DrawLine',curWindow,[255 255 255],tickMark(tick),center(2)+VASoffset+10,tickMark(tick),center(2)+VASoffset);
         DrawFormattedText(curWindow,tickLabels{tick},tickMark(tick)-10,center(2)+VASoffset-30,[255 255 255]);
     end
-    DrawFormattedText(curWindow,'Confidence?','center',center(2)+VASoffset+75,[255 255 255]);
+    DrawFormattedText(curWindow,double('얼마나 확신하시나요?'), 'center',  center(2)+VASoffset+75, [255, 255, 255]);
+%     DrawFormattedText(curWindow,'Confidence?','center',center(2)+VASoffset+75,[255 255 255]);
 
     % Show arrow
     arrowPoints = [([-0.5 0 0.5]'.*arrowwidth)+xpos ([1 0 1]'.*arrowheight)+center(2)+VASoffset];

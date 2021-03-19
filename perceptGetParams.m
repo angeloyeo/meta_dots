@@ -8,7 +8,6 @@ p.subID = inputdlg('Please Enter SubjectID','SubjectID');
 p.age = inputdlg('Age? ','Age');
 p.gender = inputdlg('Gender? M/F','Gender');
 p.hand = inputdlg('Handedness? R/L ','Hand');
-% % 
 % p.subID = {'YDH'};
 % p.age = {'32'};
 % p.gender = {'M'};
@@ -75,7 +74,8 @@ p.stim.scaleType = 'discrete'; % discrete or continuous
 p.stim.VASwidth_inDegrees = 15;
 p.stim.VASheight_inDegrees = 2;
 p.stim.VASoffset_inDegrees = 0;
-p.stim.arrowWidth_inDegrees = 0.5;
+p.stim.arrowWidth_inDegrees = 0.8;
+% p.stim.arrowWidth_inDegrees = 0.5; % 원래의 것
 
 p.stim.VASwidth_inPixels = degrees2pixels(p.stim.VASwidth_inDegrees, p.sittingDist);
 p.stim.VASheight_inPixels = degrees2pixels(p.stim.VASheight_inDegrees, p.sittingDist);
