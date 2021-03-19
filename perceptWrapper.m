@@ -124,7 +124,7 @@ WaitSecs(2);
 %% 슬라이드 6
 
 InstructName = '슬라이드6';
-instructScreen = imread(['지시문/' InstructName], 'tif'); % 그림 사이즈 보다는 스크린 사이즈가 더 커야만 화면에 나옴.
+instructScreen = imread(['지시문/' InstructName], 'tif');
 Screen('Flip',p.frame.ptr);
 Screen(p.frame.ptr,'PutImage',instructScreen);
 Screen('Flip',p.frame.ptr);
@@ -170,13 +170,13 @@ WaitSecs(2);
  
 feedback = 1;
 conf = 0;
-% ntrials = 2; % 임의로 수정한 세팅
 ntrials = Inf; % 원래 세팅
+% ntrials = 2; % 테스트
 staircase_reversal = 8;
 stepsize = 4;
 adapt  = 1;
 start_x = round(.5*p.stim.REF); % start at REF+50%REF
-aresults = perceptRunBlock(p, feedback, conf, ntrials, staircase_reversal, stepsize, adapt, start_x);
+results = perceptRunBlock(p, feedback, conf, ntrials, staircase_reversal, stepsize, adapt, start_x);
 xc=median(results.contrast(results.i_trial_lastreversal:end)); % contrast at end of block
 
 %% 슬라이드 9~14: confidence rating 소개
@@ -205,8 +205,8 @@ end
 % 연습 trial 2번째 시작(feedback 없고, confidence score 매기는 경우)
 feedback = 0;
 conf = 1;
-% ntrials = 2; % 임의로 수정한 세팅
 ntrials = 10; % 원래 세팅
+% ntrials = 2; % 테스트용
 staircase_reversal = Inf;
 start_x = xc; 
 stepsize = 1;
@@ -242,7 +242,8 @@ WaitSecs(2);
 nblocks = 8;
 feedback = 0;
 conf = 1;
-ntrials = 25;
+ntrials = 25; % 원래 값
+% ntrials = 2; % 테스트용
 staircase_reversal = Inf;
 stepsize = 1;
 adapt = 0;

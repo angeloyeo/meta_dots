@@ -4,15 +4,15 @@ function p = perceptGetParams
 % SF 2012
 
 %% Subject parameters
-% p.subID = inputdlg('Please Enter SubjectID','SubjectID');
-% p.age = inputdlg('Age? ','Age');
-% p.gender = inputdlg('Gender? M/F','Gender');
-% p.hand = inputdlg('Handedness? R/L ','Hand');
-% 
-p.subID = {'YDH'};
-p.age = {'32'};
-p.gender = {'M'};
-p.hand = {'R'};
+p.subID = inputdlg('Please Enter SubjectID','SubjectID');
+p.age = inputdlg('Age? ','Age');
+p.gender = inputdlg('Gender? M/F','Gender');
+p.hand = inputdlg('Handedness? R/L ','Hand');
+% % 
+% p.subID = {'YDH'};
+% p.age = {'32'};
+% p.gender = {'M'};
+% p.hand = {'R'};
 
 p.filename = ['perceptData' p.subID{1} '.mat'];
 
@@ -31,8 +31,8 @@ p.filename = [dataDir p.filename];
 
 p.sittingDist = 40;
 p.BackgroundColor = 0;
-% p.windowsize =  []; % empty for full screen
-p.windowsize = [1280 720]; % 임시로 수정함.
+p.windowsize =  []; % empty for full screen
+% p.windowsize = [1280 720]; % 임시로 수정함.
 p.frame = OpenDisplay(p.windowsize,p.BackgroundColor);
 t=Screen('Flip', p.frame.ptr); 
 % Size of the display
