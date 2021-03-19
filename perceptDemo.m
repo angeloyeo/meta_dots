@@ -1,4 +1,4 @@
-        function perceptWrapper
+function perceptWrapper
 % Dots task for perceptual metacognition
 % Sebastien Massoni, modified by SF 2013
 

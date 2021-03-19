@@ -202,7 +202,6 @@ end
 % WaitSecs(0.5);
 % WaitAnyPress(KbName('space'));
 
-% 연습 trial 2번째 시작(feedback 없고, confidence score 매기는 경우)
 feedback = 0;
 conf = 1;
 % ntrials = 2; % 임의로 수정한 세팅
@@ -213,32 +212,17 @@ stepsize = 1;
 adapt = 0;
 results = perceptRunBlock(p, feedback, conf, ntrials, staircase_reversal, stepsize, adapt, start_x);
 
-%% 슬라이드 16: 연습 종료를 알리는 슬라이드
-InstructName = '슬라이드16';
-instructScreen = imread(['지시문/' InstructName], 'tif'); % 그림 사이즈 보다는 스크린 사이즈가 더 커야만 화면에 나옴.
-Screen('Flip',p.frame.ptr);
-Screen(p.frame.ptr,'PutImage',instructScreen);
-Screen('Flip',p.frame.ptr);
-WaitSecs(2);
- WaitAnyPress(KbName('space'));
- 
-%% 슬라이드 17: Main task blocks (8 blocks of 25 trials)
-InstructName = '슬라이드17';
-instructScreen = imread(['지시문/' InstructName], 'tif'); % 그림 사이즈 보다는 스크린 사이즈가 더 커야만 화면에 나옴.
-Screen('Flip',p.frame.ptr);
-Screen(p.frame.ptr,'PutImage',instructScreen);
-Screen('Flip',p.frame.ptr);
-WaitSecs(2);
- WaitAnyPress(KbName('space'));
- 
-% DrawText (p.frame.ptr, {...
-%     double('이제 연습에서와 같이 각각 25 번의 시도로 구성된 8 개의 블록을 수행하겠습니다.'),' ', ' ',...
-%     double('질문이 있으면 지금 실험자에게 물어보세요!'),' ' ,...
-%     double('스페이스 바를 누르면 실험이 시작됩니다.')}, 'c');
-% Screen('Flip', p.frame.ptr);
-% WaitSecs(0.5);
-% WaitAnyPress(KbName('space'));
-
+%% Main task blocks (8 blocks of 25 trials)
+DrawText (p.frame.ptr, {...
+    double('이제 연습에서와 같이 각각 25 번의 시도로 구성된 8 개의 블록을 수행하겠습니다.'),' ', ' ',...
+    double('질문이 있으면 지금 실험자에게 물어보세요!'),' ' ,...
+    double('스페이스 바를 누르면 실험이 시작됩니다.')}, 'c');
+% DrawFormattedText(p.frame.ptr, ['We will now ask you to do 8 blocks of 25 trials each, just like in the practice \n\n' ...
+%     'If you have any questions, please ask the experimenter now! \n\n' ...
+%     'Otherwise please press the space bar to start...'], 'center', 'center');
+Screen('Flip', p.frame.ptr);
+WaitSecs(0.5);
+WaitAnyPress(KbName('space'));
 nblocks = 8;
 feedback = 0;
 conf = 1;
@@ -250,23 +234,14 @@ for b = 1:nblocks
     start_x = xc;
     results = perceptRunBlock(p, feedback, conf, ntrials, staircase_reversal, stepsize, adapt, start_x);
     xc=round(median(results.contrast(results.i_trial_lastreversal:end))); % contrast at end of block
-    
-    %% 슬라이드 22~29
-    InstructName = ['슬라이드',num2str(21+b)];
-    instructScreen = imread(['지시문/' InstructName], 'tif'); % 그림 사이즈 보다는 스크린 사이즈가 더 커야만 화면에 나옴.
-    Screen('Flip',p.frame.ptr);
-    Screen(p.frame.ptr,'PutImage',instructScreen);
-    Screen('Flip',p.frame.ptr);
-    WaitSecs(2);
-    WaitAnyPress(KbName('space'));
-    
-%     DrawText(p.frame.ptr, {...
-%         double('잠깐 쉴까요?'),' ' ,' ',...
-%         double('다음 블록을 시작할 준비가 되셨으면 스페이스바를 눌러주세요')}, 'c');
-%     Screen('Flip', p.frame.ptr);
-%     WaitSecs(0.5);
-%     WaitAnyPress(KbName('space'));    
-    
+    DrawText(p.frame.ptr, {...
+        double('잠깐 쉴까요?'),' ' ,' ',...
+        double('다음 블록을 시작할 준비가 되셨으면 스페이스바를 눌러주세요')}, 'c');
+%     DrawFormattedText(p.frame.ptr, ['Take a break! \n\n' ...
+%         'Please press the space bar to start the next block when you are ready...'], 'center', 'center');
+    Screen('Flip', p.frame.ptr);
+    WaitSecs(0.5);
+    WaitAnyPress(KbName('space'));    
     DATA(b).results = results;
     
     save(p.filename,'DATA');

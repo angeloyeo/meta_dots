@@ -32,7 +32,7 @@ p.filename = [dataDir p.filename];
 p.sittingDist = 40;
 p.BackgroundColor = 0;
 % p.windowsize =  []; % empty for full screen
-p.windowsize = [800 600]; % 임시로 수정함.
+p.windowsize = [1280 720]; % 임시로 수정함.
 p.frame = OpenDisplay(p.windowsize,p.BackgroundColor);
 t=Screen('Flip', p.frame.ptr); 
 % Size of the display
@@ -84,7 +84,7 @@ p.stim.arrowWidth_inPixels = degrees2pixels(p.stim.arrowWidth_inDegrees, p.sitti
 
 %% Timings
 
-p.times.fix = 1;
+p.times.fix = 0.5;% 1에서 0.5로 수정. 1000ms에서 500ms로 fixation mark 나오는 시간 수정하였음.
 p.times.dots = 0.7;
 p.times.postChoice = 0.5;
 p.times.confDuration_inSecs = 4;

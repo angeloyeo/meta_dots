@@ -162,7 +162,9 @@ else
 end
 
 % 한국어 처리할 수 있도록 코드 추가
+% Screen('Preference','TextEncodingLocale','UTF-8')% 한글 인코딩 깨지는 경우에 사용
 Screen('TextFont', wPtr, '-:lang=ko');
+
 wh(:,2) = wh(:,2) * 1.2; % y축 간격을 조금 더 키우는 용도
 
 for i=1:numel(txt)
