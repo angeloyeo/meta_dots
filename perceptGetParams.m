@@ -30,8 +30,11 @@ p.filename = [dataDir p.filename];
 
 p.sittingDist = 40;
 p.BackgroundColor = 0;
-p.windowsize =  []; % empty for full screen
-% p.windowsize = [1280 720]; % 임시로 수정함.
+
+p.windowsize =  []; % 원래 세팅
+
+% p.windowsize = [1280 720]; % 테스트용
+
 p.frame = OpenDisplay(p.windowsize,p.BackgroundColor);
 t=Screen('Flip', p.frame.ptr); 
 % Size of the display
